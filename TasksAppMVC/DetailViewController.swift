@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController, UITextViewDelegate {
+final class DetailViewController: UIViewController, UITextViewDelegate {
 
     var currentTask: Task!
     
@@ -25,11 +25,10 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.dismissKeyboard))
         self.view.addGestureRecognizer(gestureRecognizer)
         
+        self.addToolBarToInput()
+        
         self.automaticallyAdjustsScrollViewInsets = false
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -39,7 +38,7 @@ class DetailViewController: UIViewController, UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         let line = textView.caretRect(for: (textView.selectedTextRange?.start)!)
-        let overflow = line.origin.y + line.size.height - (textView.contentOffset.y + textView.bounds.size.height * 0.55 - textView.contentInset.bottom - textView.contentInset.top)
+        let overflow = line.origin.y + line.size.height - (textView.contentOffset.y + textView.bounds.size.height * 0.5 - textView.contentInset.bottom - textView.contentInset.top)
         if overflow > 0 {
             var offset = textView.contentOffset
             offset.y += overflow + 7
@@ -53,10 +52,6 @@ extension DetailViewController {
     func dismissKeyboard() {
         self.textView.resignFirstResponder()
     }
-}
-
-
-extension DetailViewController: Dismissable {
     
     func backAction() {
         let dataManager = DataManager()
@@ -66,7 +61,18 @@ extension DetailViewController: Dismissable {
         } else {
             dataManager.addTask(taskDescription: textView.text)
         }
-  
+        
     }
     
+    func addToolBarToInput() {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 50))
+        toolbar.barStyle = UIBarStyle.default
+        toolbar.tintColor = UIColor.white
+        toolbar.barTintColor = UIColor.blue
+        toolbar.items = [
+            UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(DetailViewController.dismissKeyboard))
+        ]
+        textView.inputAccessoryView = toolbar
+    }
 }
+

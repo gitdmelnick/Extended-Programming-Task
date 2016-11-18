@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaskViewCell: UITableViewCell {
+final class TaskViewCell: UITableViewCell {
     
     func configure(with task: Task) {
         let title = task.taskDescription.components(separatedBy: "\n").first!

@@ -9,11 +9,10 @@
 import UIKit
 
 protocol ModalViewControllerDelegate: class {
-    
     func onDismissBlock(task: Task)
 }
 
-class ModalViewController: UIViewController {
+final class ModalViewController: UIViewController {
     
     var currentTask: Task!
     
@@ -36,6 +35,7 @@ class ModalViewController: UIViewController {
     }
 
     
+    // MARK: Button actions
     @IBAction func editAction(_ sender: AnyObject) {
         presentDetailViewForEditing()
     }
