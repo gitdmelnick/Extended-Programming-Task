@@ -60,7 +60,7 @@ final class DataManager {
         
         try! realm.write {
             task.taskDescription = taskDescription
-            task.dateEdited = Date().string(format: "MM/dd/yyyy HH:mm")
+            task.dateEdited = Date().string(format: "MM.dd.yyyy HH:mm")
             realm.add(task, update: true)
         }
     }

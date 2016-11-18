@@ -33,7 +33,10 @@ final class DetailViewController: UIViewController, UITextViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.backAction()
+        
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).characters.count != 0 && textView.text.characters.count != 0 {
+            self.backAction()
+        }
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -55,20 +58,20 @@ extension DetailViewController {
     
     func backAction() {
         let dataManager = DataManager()
-        
+
+        let trimmedDescription = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if currentTask != nil {
-            dataManager.updateTask(task: currentTask, taskDescription: textView.text)
+            dataManager.updateTask(task: currentTask, taskDescription: trimmedDescription)
         } else {
-            dataManager.addTask(taskDescription: textView.text)
+            dataManager.addTask(taskDescription: trimmedDescription)
         }
         
     }
     
     func addToolBarToInput() {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 50))
-        toolbar.barStyle = UIBarStyle.default
-        toolbar.tintColor = UIColor.white
-        toolbar.barTintColor = UIColor.blue
+        toolbar.barStyle = .default
+        toolbar.tintColor = .darkGray
         toolbar.items = [
             UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(DetailViewController.dismissKeyboard))
         ]
