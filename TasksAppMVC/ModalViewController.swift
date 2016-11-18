@@ -34,6 +34,7 @@ class ModalViewController: UIViewController {
         dateCreatedLabel.text = "Created: \(currentTask.dateCreated)"
         dateEditedLabel.text = "Edited: \(currentTask.dateEdited)"
     }
+
     
     @IBAction func editAction(_ sender: AnyObject) {
         presentDetailViewForEditing()

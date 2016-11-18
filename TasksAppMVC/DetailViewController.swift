@@ -22,8 +22,11 @@ class DetailViewController: UIViewController {
             textView.text = currentTask.taskDescription
         }
         
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(DetailViewController.backAction))   
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.backAction()
     }
 }
 
@@ -34,10 +37,8 @@ extension DetailViewController: Dismissable {
         
         if currentTask != nil {
             dataManager.updateTask(task: currentTask, taskDescription: textView.text)
-            self.dismiss(completion: nil)
         } else {
             dataManager.addTask(taskDescription: textView.text)
-            self.dismiss(completion: nil)
         }
   
     }
