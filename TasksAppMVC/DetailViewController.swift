@@ -8,14 +8,13 @@
 
 import UIKit
 
-
-
 class DetailViewController: UIViewController {
 
     var currentTask: Task!
     
     @IBOutlet weak var textView: UITextView!
     
+    // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         

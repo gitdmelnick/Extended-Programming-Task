@@ -82,16 +82,16 @@
 			isa = PBXGroup;
 			children = (
 				9560FD281DDDA29E0059E357 /* Task.swift */,
-				9560FD161DDD9E6B0059E357 /* AppDelegate.swift */,
+				9560FD2E1DDDA92B0059E357 /* Protocols.swift */,
 				9560FD181DDD9E6B0059E357 /* MainViewController.swift */,
 				9560FD321DDDADC10059E357 /* ModalViewController.swift */,
 				9560FD301DDDAAAB0059E357 /* DetailViewController.swift */,
-				9560FD2E1DDDA92B0059E357 /* Protocols.swift */,
 				9560FD2C1DDDA5470059E357 /* TaskViewCell.swift */,
 				9560FD2A1DDDA3100059E357 /* DataManager.swift */,
 				9560FD1A1DDD9E6B0059E357 /* Main.storyboard */,
 				9560FD1D1DDD9E6B0059E357 /* Assets.xcassets */,
 				9560FD1F1DDD9E6B0059E357 /* LaunchScreen.storyboard */,
+				9560FD161DDD9E6B0059E357 /* AppDelegate.swift */,
 				9560FD221DDD9E6B0059E357 /* Info.plist */,
 			);
 			path = TasksAppMVC;

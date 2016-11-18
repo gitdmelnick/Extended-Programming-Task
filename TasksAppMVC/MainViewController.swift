@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
     
     // MARK: Life cycle
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.tableView.register(TaskViewCell.self, forCellReuseIdentifier: "TaskViewCell")
@@ -29,11 +30,6 @@ class MainViewController: UIViewController {
         dataManager.retrieveTasks()
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 }
 
@@ -42,6 +38,7 @@ extension MainViewController: ModalViewControllerDelegate {
     func onDismissBlock(task: Task) {
         presentDetailViewForEditing(with: task)
     }
+    
 }
 
 extension MainViewController: UITableViewDelegate {
