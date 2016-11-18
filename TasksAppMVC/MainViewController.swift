@@ -31,6 +31,12 @@ final class MainViewController: UIViewController {
         
     }
     
+    func deselectAllCells() {
+        tableView.indexPathsForSelectedRows?.forEach {
+            tableView.deselectRow(at: $0, animated: true)
+        }
+    }
+    
 }
 
 extension MainViewController: ModalViewControllerDelegate {
@@ -70,9 +76,6 @@ extension MainViewController: DataManagerDelegate {
         
         tableView.reloadData()
         
-        tableView.indexPathsForSelectedRows?.forEach {
-            tableView.deselectRow(at: $0, animated: true)
-        }
     }
     
 }
@@ -81,12 +84,16 @@ extension MainViewController: Presentable {
     
     func presentDetailView() {
         let viewController = storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        
+        self.deselectAllCells()
         self.present(viewController: viewController)
     }
     
     func presentDetailViewForEditing(with task:Task) {
         let viewController = storyboard!.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         viewController.currentTask = task
+        
+        self.deselectAllCells()
         self.present(viewController: viewController)
     }
     
