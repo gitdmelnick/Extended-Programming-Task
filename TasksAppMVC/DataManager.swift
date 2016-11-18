@@ -39,10 +39,10 @@ final class DataManager {
         
         try! realm.write {
             if realm.isEmpty {
-                realm.add(Task(value: [0, taskDescription, Date().string(format: "MM/dd/yyyy HH:mm"), ""]))
+                realm.add(Task(value: [0, taskDescription, Date().string(format: "MM.dd.yyyy HH:mm"), ""]))
             } else {
                 let id = realm.objects(Task.self).max(ofProperty: "id")! + 1
-                realm.add(Task(value: [id, taskDescription, Date().string(format: "MM/dd/yyyy HH:mm"), ""]))
+                realm.add(Task(value: [id, taskDescription, Date().string(format: "MM.dd.yyyy HH:mm"), ""]))
             }
         }
     }
